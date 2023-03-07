@@ -1,0 +1,12 @@
+<div class="container">
+    <form #form="ngForm" (ngSubmit)="addSelectedTeam(form)">
+        <div class="form-group">
+            <label for="teamSelect">Team</label>
+            <select id="teamSelect" name="teamSelect" class="form-control" [(ngModel)]="selectedTeamId">
+                <option *ngFor="let team of teams" [ngValue]="team.id">{{ team.name }}</option>
+            </select>
+        </div>
+
+        <button type="submit" id="trackBtn" class="btn btn-primary">Track</button>
+    </form>
+</div>
