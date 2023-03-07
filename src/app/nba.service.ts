@@ -5,7 +5,7 @@ import { ITeamData } from './data/teamdata';
 import { ITeam } from './data/team';
 import { IGame } from './data/game';
 import { IGameData } from './data/gamedata';
-import buildUrl from 'build-url-ts';
+import { buildUrl } from 'build-url-ts';
 import { DatePipe } from '@angular/common';
 
 @Injectable({

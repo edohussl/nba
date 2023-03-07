@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ITeam } from '../data/team';
 import { NbaService } from '../nba.service';
 import { TrackingService } from '../tracking.service';
