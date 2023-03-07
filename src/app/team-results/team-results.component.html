@@ -1,0 +1,12 @@
+<div *ngIf="team" class="team-details">
+    <app-team-header [team]="team" />
+
+    <div class="row">
+        <div>
+            <p>Scores of past {{ history }} days:</p>
+            <p *ngFor="let game of games"><strong>{{ game.home_team.abbreviation }}</strong> {{ game.home_team_score }} - {{ game.visitor_team_score }} <strong>{{ game.visitor_team.abbreviation}}</strong></p>
+        </div>
+    </div>
+
+    <button [routerLink]="['/']" class="btn btn-success">&lt;&lt; Back to all team stats</button>
+</div>

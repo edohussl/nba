@@ -1,0 +1,17 @@
+<div *ngIf="team && results" class="team-details">
+    <app-team-header [team]="team" (closed)="onClosed($event)" />
+
+    <div class="row">
+        <div class="col-6">
+            <p>Results of past {{ history }} days:</p>
+            <span *ngFor="let result of results.results" class="dot" [class.won]="result.wasWon">{{ result.wasWon ? 'W' : 'L' }}</span>
+            <p>Avg pts scored: <strong>{{ results.averageScored }}</strong></p>
+            <p>Avg pts conceded: <strong>{{ results.averageConceded }}</strong></p>
+        </div>
+        <div class="col-6">
+            <img title="team image" src="{{ team | imageUrl }}">
+        </div>
+    </div>
+
+    <button [routerLink]="['results', team.id]" class="btn btn-success">See game results >></button>
+</div>

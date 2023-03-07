@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ITeam } from '../data/team';
 import { NbaService } from '../nba.service';
+import { TrackingService } from '../tracking.service';
 
 @Component({
   selector: 'app-team-list',
@@ -12,21 +13,33 @@ export class TeamListComponent implements OnInit {
 
   teams: ITeam[] = [];
 
-  trackedTeams: ITeam[] = [];
+  selectedTeam?: ITeam;
 
-  selectedTeamId?: number;
-
-  constructor(private nbaService: NbaService) {
+  constructor(private nbaService: NbaService, public trackingService: TrackingService) {
   }
 
   ngOnInit(): void {
     this.nbaService.getTeams().pipe().subscribe((teams: ITeam[]) => {
       this.teams = teams.sort((a, b) => a.name.localeCompare(b.name));
-      this.selectedTeamId = this.teams[0].id;
+      this.selectedTeam = this.teams[0];
     });
   }
 
-  addSelectedTeam(form: NgForm) {
-    console.log('Add ' + this.selectedTeamId);
+  addSelectedTeam() : void {
+
+    if (!this.selectedTeam) {
+      return;
+    }
+
+    if (this.trackingService.isTracked(this.selectedTeam!)) {
+      alert('This team is already being tracked');
+      return;
+    }
+
+    this.trackingService.trackTeam(this.selectedTeam!);
+  }
+
+  removeSelectedTeam(team: ITeam) : void {
+    this.trackingService.untrackTeam(team);
   }
 }

@@ -1,0 +1,8 @@
+<div *ngIf="team">
+    <div class="row">
+        <h3 class="col-11">{{ team.name }} [{{ team.abbreviation }}]</h3>
+        <button type="button" class="btn-close" aria-label="Close" (click)="onClosed()" *ngIf="this.closed.observed"></button>
+    </div>
+    {{ team.conference }}
+    <hr />
+</div>

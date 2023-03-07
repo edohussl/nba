@@ -1,0 +1,24 @@
+.team-details {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 2px;
+    text-align: center;
+}
+
+.won {
+    background-color: green;
+}
+
+img {
+    width: 100%;
+}

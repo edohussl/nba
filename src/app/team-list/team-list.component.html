@@ -1,12 +1,16 @@
-<div class="container">
-    <form #form="ngForm" (ngSubmit)="addSelectedTeam(form)">
+    <form (ngSubmit)="addSelectedTeam()">
         <div class="form-group">
             <label for="teamSelect">Team</label>
-            <select id="teamSelect" name="teamSelect" class="form-control" [(ngModel)]="selectedTeamId">
-                <option *ngFor="let team of teams" [ngValue]="team.id">{{ team.name }}</option>
+            <select id="teamSelect" name="teamSelect" class="form-control" [(ngModel)]="selectedTeam">
+                <option *ngFor="let team of teams" [ngValue]="team">{{ team.name }}</option>
             </select>
         </div>
 
         <button type="submit" id="trackBtn" class="btn btn-primary">Track</button>
     </form>
-</div>
+
+    <div class="row tracked-teams" >
+        <div class="col-6" *ngFor="let team of trackingService.teams">
+            <app-team-details [team]="team" [history]="12" (closed)="removeSelectedTeam($event)" />
+        </div>
+    </div>

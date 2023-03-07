@@ -1,7 +1,7 @@
 import { IMeta } from "./meta";
 import { ITeam } from "./team";
 
-export interface IData {
+export interface ITeamData {
     data: ITeam[],
     meta: IMeta
   }
